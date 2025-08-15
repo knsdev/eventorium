@@ -17,7 +17,9 @@ class EventFormType extends AbstractType
   {
     $builder
       ->add('name')
+      ->add('description')
       ->add('startTime')
+      ->add('endTime')
       ->add('image')
       ->add('capacity')
       ->add('contactEmail')

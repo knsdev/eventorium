@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
@@ -41,6 +42,12 @@ class Event
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?EventType $type = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
+    #[ORM\Column]
+    private ?\DateTime $endTime = null;
 
     public function getId(): ?int
     {
@@ -151,6 +158,30 @@ class Event
     public function setType(?EventType $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getEndTime(): ?\DateTime
+    {
+        return $this->endTime;
+    }
+
+    public function setEndTime(\DateTime $endTime): static
+    {
+        $this->endTime = $endTime;
 
         return $this;
     }
