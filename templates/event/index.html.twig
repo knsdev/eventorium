@@ -28,7 +28,7 @@
       <td>{{ event.id }}</td>
       <td>{{ event.name }}</td>
       <td>{{ event.address.locationName }}</td>
-      <td>{{ event.description }}</td>
+      <td>{{ shortDescriptions[loop.index0] }}</td>
       <td>{{ event.startTime ? event.startTime|date('Y-m-d H:i:s') : '' }}</td>
       <td>{{ event.endTime ? event.endTime|date('Y-m-d H:i:s') : '' }}</td>
       <td>{{ event.image }}</td>

@@ -17,8 +17,25 @@ final class EventController extends AbstractController
   #[Route('/', name: 'app_event_index', methods: ['GET'])]
   public function index(EventRepository $eventRepository): Response
   {
+    $events = $eventRepository->findAll();
+    $shortDescriptions = [];
+    $maxStringLength = 100;
+
+    for ($i = 0; $i < count($events); $i++) {
+      $desc = $events[$i]->getDescription();
+      $strLength = strlen($desc);
+
+      if ($strLength > $maxStringLength) {
+        $desc = substr($desc, 0, $maxStringLength);
+        $desc = substr_replace($desc, ' ...', -4);
+      }
+
+      array_push($shortDescriptions, $desc);
+    }
+
     return $this->render('event/index.html.twig', [
-      'events' => $eventRepository->findAll(),
+      'events' => $events,
+      'shortDescriptions' => $shortDescriptions
     ]);
   }
 
