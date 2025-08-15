@@ -19,6 +19,7 @@
       <th>ContactEmail</th>
       <th>ContactPhoneNumber</th>
       <th>Url</th>
+      <th>Type</th>
       <th>actions</th>
     </tr>
   </thead>
@@ -36,6 +37,7 @@
       <td>{{ event.contactEmail }}</td>
       <td>{{ event.contactPhoneNumber }}</td>
       <td>{{ event.url }}</td>
+      <td>{{ event.type.name }}</td>
       <td>
         <a href="{{ path('app_event_show', {'id': event.id}) }}">show</a>
         <a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
