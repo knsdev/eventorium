@@ -11,8 +11,13 @@ class EventTypeFormType extends AbstractType
 {
   public function buildForm(FormBuilderInterface $builder, array $options): void
   {
+    $fieldOptionsDefault = [
+      'attr' => ['class' => 'form-control'],
+      'label_attr' => ['class' => 'form-label'],
+    ];
+
     $builder
-      ->add('name');
+      ->add('name', null, $fieldOptionsDefault);
   }
 
   public function configureOptions(OptionsResolver $resolver): void

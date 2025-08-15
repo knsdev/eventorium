@@ -1,35 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}EventType index{% endblock %}
+{% block title %}Event Types{% endblock %}
 
 {% block body %}
-    <h1>EventType index</h1>
+<div class="container">
+  <h1 class="my-3">Event Types</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for event_type in event_types %}
-            <tr>
-                <td>{{ event_type.id }}</td>
-                <td>{{ event_type.name }}</td>
-                <td>
-                    <a href="{{ path('app_event_type_show', {'id': event_type.id}) }}">show</a>
-                    <a href="{{ path('app_event_type_edit', {'id': event_type.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+  <div class="mb-3 d-flex flex-row gap-2">
+    <a href="{{ path('app_event_type_new') }}" class="btn btn-primary">Create New</a>
+  </div>
 
-    <a href="{{ path('app_event_type_new') }}">Create new</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event_type in event_types %}
+      <tr>
+        <td>{{ event_type.id }}</td>
+        <td>{{ event_type.name }}</td>
+        <td class="d-flex flex-row gap-2">
+          {# <a href="{{ path('app_event_type_show', {'id': event_type.id}) }}" class="btn btn-primary">Show</a> #}
+          <a href="{{ path('app_event_type_edit', {'id': event_type.id}) }}" class="btn btn-success">Edit</a>
+          {{ include('event_type/_delete_form.html.twig') }}
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="3">no records found</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="{{ path('app_event_index') }}" class="btn btn-secondary" style="width: 10rem;">Back</a>
+</div>
+
 {% endblock %}
