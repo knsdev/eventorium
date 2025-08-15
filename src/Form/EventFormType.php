@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Translation\TranslatableMessage;
 
 class EventFormType extends AbstractType
 {
@@ -24,7 +25,17 @@ class EventFormType extends AbstractType
       ->add('url')
       ->add('address', EntityType::class, [
         'class' => Address::class,
-        'choice_label' => 'id',
+        'choice_label' => function ($choice, string $key, mixed $value): TranslatableMessage|string {
+          return $choice->getStreetName()
+            . ' '
+            . $choice->getStreetNumber()
+            . ', '
+            . $choice->getZipCode()
+            . ' '
+            . $choice->getCityName()
+            . ', '
+            . $choice->getCountryName();
+        },
       ])
       ->add('type', EntityType::class, [
         'class' => EventType::class,
