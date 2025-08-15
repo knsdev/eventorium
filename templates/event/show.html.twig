@@ -16,7 +16,11 @@
       <td>{{ event.name }}</td>
     </tr>
     <tr>
-      <th>Name</th>
+      <th>LocationName</th>
+      <td>{{ event.address.locationName }}</td>
+    </tr>
+    <tr>
+      <th>Description</th>
       <td>{{ event.description }}</td>
     </tr>
     <tr>
@@ -34,6 +38,14 @@
     <tr>
       <th>Capacity</th>
       <td>{{ event.capacity }}</td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>{{ event.address.streetName
+        ~ ' ' ~ event.address.streetNumber
+        ~ ', ' ~ event.address.zipCode
+        ~ ' ' ~ event.address.cityName
+        ~ ', ' ~ event.address.countryName }}</td>
     </tr>
     <tr>
       <th>ContactEmail</th>

@@ -28,6 +28,9 @@ class Address
     #[ORM\Column(length: 100)]
     private ?string $countryName = null;
 
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $locationName = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class Address
     public function setCountryName(string $countryName): static
     {
         $this->countryName = $countryName;
+
+        return $this;
+    }
+
+    public function getLocationName(): ?string
+    {
+        return $this->locationName;
+    }
+
+    public function setLocationName(?string $locationName): static
+    {
+        $this->locationName = $locationName;
 
         return $this;
     }
