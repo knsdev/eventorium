@@ -30,8 +30,9 @@ final class EventController extends AbstractController
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-      // Prevent insert of duplicate address
       $newAddress = $event->getAddress();
+
+      // Prevent insert of duplicate address
       $existingAddress = $addressRepository->findOneBy(
         [
           'streetName' => $newAddress->getStreetName(),
@@ -44,9 +45,10 @@ final class EventController extends AbstractController
 
       if ($existingAddress) {
         $event->setAddress($existingAddress);
-        $newAddress = null;
+        $newAddress = $event->getAddress();
       }
 
+      $entityManager->persist($newAddress);
       $entityManager->persist($event);
       $entityManager->flush();
 
