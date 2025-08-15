@@ -23,20 +23,7 @@ class EventFormType extends AbstractType
       ->add('contactEmail')
       ->add('contactPhoneNumber')
       ->add('url')
-      ->add('address', EntityType::class, [
-        'class' => Address::class,
-        'choice_label' => function ($choice, string $key, mixed $value): TranslatableMessage|string {
-          return $choice->getStreetName()
-            . ' '
-            . $choice->getStreetNumber()
-            . ', '
-            . $choice->getZipCode()
-            . ' '
-            . $choice->getCityName()
-            . ', '
-            . $choice->getCountryName();
-        },
-      ])
+      ->add('address', AddressType::class) // embedded form AddressType
       ->add('type', EntityType::class, [
         'class' => EventType::class,
         'choice_label' => 'name',
