@@ -31,7 +31,7 @@
       <td>{{ shortDescriptions[loop.index0] }}</td>
       <td>{{ event.startTime ? event.startTime|date('Y-m-d H:i:s') : '' }}</td>
       <td>{{ event.endTime ? event.endTime|date('Y-m-d H:i:s') : '' }}</td>
-      <td>{{ event.image }}</td>
+      <td><img src="{{ event.image }}" alt="" width="150"></td>
       <td>{{ event.capacity }}</td>
       <td>{{ event.contactEmail }}</td>
       <td>{{ event.contactPhoneNumber }}</td>
