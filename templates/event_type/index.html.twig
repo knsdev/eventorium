@@ -13,15 +13,13 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Id</th>
         <th>Name</th>
-        <th>actions</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       {% for event_type in event_types %}
       <tr>
-        <td>{{ event_type.id }}</td>
         <td>{{ event_type.name }}</td>
         <td class="d-flex flex-row gap-2">
           {# <a href="{{ path('app_event_type_show', {'id': event_type.id}) }}" class="btn btn-primary">Show</a> #}
