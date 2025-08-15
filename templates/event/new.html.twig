@@ -3,9 +3,13 @@
 {% block title %}New Event{% endblock %}
 
 {% block body %}
-    <h1>Create new Event</h1>
+<div class="container">
+  <div style="max-width: 700px;">
+    <h1 class="my-3">Create new Event</h1>
 
     {{ include('event/_form.html.twig') }}
 
-    <a href="{{ path('app_event_index') }}">back to list</a>
+    <a class="btn btn-secondary mb-3" style="width: 10rem;" href="{{ path('app_event_index') }}">Back</a>
+  </div>
+</div>
 {% endblock %}

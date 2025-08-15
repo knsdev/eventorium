@@ -13,13 +13,18 @@ class AddressType extends AbstractType
 {
   public function buildForm(FormBuilderInterface $builder, array $options): void
   {
+    $fieldOptionsDefault = [
+      'attr' => ['class' => 'form-control'],
+      'label_attr' => ['class' => 'form-label'],
+    ];
+
     $builder
-      ->add('locationName', TextType::class)
-      ->add('streetName', TextType::class)
-      ->add('streetNumber', IntegerType::class)
-      ->add('zipCode', IntegerType::class)
-      ->add('cityName', TextType::class)
-      ->add('countryName', TextType::class)
+      ->add('locationName', TextType::class, $fieldOptionsDefault)
+      ->add('streetName', TextType::class, $fieldOptionsDefault)
+      ->add('streetNumber', IntegerType::class, $fieldOptionsDefault)
+      ->add('zipCode', IntegerType::class, $fieldOptionsDefault)
+      ->add('cityName', TextType::class, $fieldOptionsDefault)
+      ->add('countryName', TextType::class, $fieldOptionsDefault)
     ;
   }
 

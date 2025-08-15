@@ -3,11 +3,11 @@
 {% block title %}Edit EventType{% endblock %}
 
 {% block body %}
-    <h1>Edit EventType</h1>
+<h1>Edit EventType</h1>
 
-    {{ include('event_type/_form.html.twig', {'button_label': 'Update'}) }}
+{{ include('event_type/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_event_type_index') }}">back to list</a>
+<a class="btn btn-secondary mb-3" style="width: 10rem;" href="{{ path('app_event_type_index') }}">Back</a>
 
-    {{ include('event_type/_delete_form.html.twig') }}
+{{ include('event_type/_delete_form.html.twig') }}
 {% endblock %}

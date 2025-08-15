@@ -3,9 +3,9 @@
 {% block title %}New Address{% endblock %}
 
 {% block body %}
-    <h1>Create new Address</h1>
+<h1>Create new Address</h1>
 
-    {{ include('address/_form.html.twig') }}
+{{ include('address/_form.html.twig') }}
 
-    <a href="{{ path('app_address_index') }}">back to list</a>
+<a class="btn btn-secondary mb-3" style="width: 10rem;" href="{{ path('app_address_index') }}">Back</a>
 {% endblock %}
