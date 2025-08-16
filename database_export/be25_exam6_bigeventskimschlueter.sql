@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2025 at 02:23 PM
+-- Generation Time: Aug 16, 2025 at 02:52 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,8 +60,8 @@ INSERT INTO `address` (`id`, `street_name`, `street_number`, `zip_code`, `city_n
 
 CREATE TABLE `event` (
   `id` int(11) NOT NULL,
-  `address_id` int(11) NOT NULL,
-  `type_id` int(11) NOT NULL,
+  `address_id` int(11) DEFAULT NULL,
+  `type_id` int(11) DEFAULT NULL,
   `name` varchar(100) NOT NULL,
   `start_time` datetime NOT NULL,
   `image` varchar(255) DEFAULT NULL,
@@ -199,8 +199,8 @@ ALTER TABLE `messenger_messages`
 -- Constraints for table `event`
 --
 ALTER TABLE `event`
-  ADD CONSTRAINT `FK_3BAE0AA7C54C8C93` FOREIGN KEY (`type_id`) REFERENCES `event_type` (`id`),
-  ADD CONSTRAINT `FK_3BAE0AA7F5B7AF75` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`);
+  ADD CONSTRAINT `FK_3BAE0AA7C54C8C93` FOREIGN KEY (`type_id`) REFERENCES `event_type` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `FK_3BAE0AA7F5B7AF75` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
