@@ -12,30 +12,29 @@
       </div>
       <div class="p-3">
         <h1 class="mb-3">{{ event.name }}</h1>
-        <p>{{ event.description|nl2br }}</p>
-        <hr>
-        <div class="d-flex flex-row gap-3 mb-2">
-          <h4 class="text-secondary-emphasis" style="flex-basis: 8rem">Type:</h4>
-          <h4 class="text-secondary-emphasis">{{ event.type.name }}</h4>
-        </div>
-        <div class="d-flex flex-row gap-3">
-          <h4 class="text-secondary-emphasis" style="flex-basis: 8rem">Capacity:</h4>
-          <h4 class="text-secondary-emphasis">{{ event.capacity }} people</h4>
-        </div>
-        <hr>
-        <h2 class="mb-3">Event Date</h2>
         {% if (event.startTime|date('d M Y')) != (event.endTime|date('d M Y')) %}
-        <p class="mb-2 text-secondary-emphasis h5">{{ event.startTime ? event.startTime|date('d M Y') : '' }}
+        <p class="mb-3 text-secondary-emphasis h5">{{ event.startTime ? event.startTime|date('d M Y') : '' }}
           &ndash; {{
           event.endTime ?
           event.endTime|date('d M Y') : '' }}</p>
         {% else %}
-        <p class="mb-2 text-secondary-emphasis h5">{{ event.startTime ? event.startTime|date('d M Y H:i') : '' }}
+        <p class="mb-3 text-secondary-emphasis h5">{{ event.startTime ? event.startTime|date('d M Y H:i') : '' }}
           &ndash; {{
           event.endTime ?
           event.endTime|date('H:i') : '' }}
         </p>
         {% endif %}
+        <hr>
+        <p>{{ event.description|nl2br }}</p>
+        <hr>
+        <div class="d-flex flex-row gap-3 mb-2">
+          <h5 class="text-secondary-emphasis mb-0" style="flex-basis: 8rem">Type:</h5>
+          <h5 class="text-secondary-emphasis mb-0">{{ event.type.name }}</h5>
+        </div>
+        <div class="d-flex flex-row gap-3">
+          <h5 class="text-secondary-emphasis mb-0" style="flex-basis: 8rem">Capacity:</h5>
+          <h5 class="text-secondary-emphasis mb-0">{{ event.capacity }} people</h5>
+        </div>
         <hr>
         <h2 class="mb-3">Event Location</h2>
         <h4 class="mb-3 text-secondary-emphasis">{{ event.address.locationName }}</h4>
@@ -45,9 +44,11 @@
             endif %}, {{ event.address.zipCode }} {{ event.address.cityName }}, {{ event.address.countryName }}
           </span>
         </p>
+        {% if event.contactPhoneNumber %}
         <p class="mb-1 ms-2"><i class="bi bi-telephone"></i> <a class="ms-2"
             href="tel:{{ event.contactPhoneNumber }}">{{
             event.contactPhoneNumber }}</a></p>
+        {% endif %}
         <p class="mb-1 ms-2"><i class="bi bi-envelope"></i> <a class="ms-2" href="mailto:{{ event.contactEmail }}">{{
             event.contactEmail
             }}</a></p>
