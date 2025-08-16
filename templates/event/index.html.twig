@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container px-sm-0 px-5">
   <h1 class="my-3">Events</h1>
-  <div class="mb-3 d-flex flex-row gap-2">
+  <div class="mb-3 d-flex flex-row flex-wrap gap-2">
     <a href="{{ path('app_event_new') }}" class="btn btn-primary">Create New</a>
     <a href="{{ path('app_event_type_index') }}" class="btn btn-secondary">Manage Event Types</a>
     <form method="GET" action="{{ path('app_event_index') }}">

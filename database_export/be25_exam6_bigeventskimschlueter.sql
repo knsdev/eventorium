@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2025 at 02:52 PM
+-- Generation Time: Aug 16, 2025 at 03:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -109,10 +109,7 @@ INSERT INTO `event_type` (`id`, `name`) VALUES
 (4, 'Theater'),
 (5, 'Art'),
 (6, 'History'),
-(7, 'Technology'),
-(8, 'Science'),
-(9, 'Festival'),
-(10, 'Show');
+(9, 'Festival');
 
 -- --------------------------------------------------------
 
