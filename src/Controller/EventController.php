@@ -24,7 +24,7 @@ final class EventController extends AbstractController
 
     foreach ($events as $event) {
       $name = $strUtil->limitStringLength($event->getName(), 35);
-      $desc = $strUtil->limitStringLength($event->getDescription(), 100);
+      $desc = $strUtil->limitStringLength($event->getDescription(), 125);
 
       array_push($names, $name);
       array_push($shortDescriptions, $desc);

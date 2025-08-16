@@ -16,13 +16,16 @@ class EventFormType extends AbstractType
   public function buildForm(FormBuilderInterface $builder, array $options): void
   {
     $fieldOptionsDefault = [
-      'attr' => ['class' => 'form-control'],
+      'attr' => ['class' => 'form-control mb-3'],
       'label_attr' => ['class' => 'form-label'],
     ];
 
     $builder
       ->add('name', null, $fieldOptionsDefault)
-      ->add('description', null, $fieldOptionsDefault)
+      ->add('description', null, [
+        'attr' => ['class' => 'form-control mb-3', 'rows' => '12'],
+        'label_attr' => ['class' => 'form-label'],
+      ])
       ->add('startTime', null, $fieldOptionsDefault)
       ->add('endTime', null, $fieldOptionsDefault)
       ->add('image', null, $fieldOptionsDefault)
@@ -30,7 +33,8 @@ class EventFormType extends AbstractType
       ->add('contactEmail', null, $fieldOptionsDefault)
       ->add('contactPhoneNumber', null, $fieldOptionsDefault)
       ->add('url', null, $fieldOptionsDefault)
-      ->add('address', AddressType::class) // embedded form AddressType
+      // embedded form
+      ->add('address', AddressType::class, ['label' => false])
       ->add('type', EntityType::class, [
         'class' => EventType::class,
         'choice_label' => 'name',

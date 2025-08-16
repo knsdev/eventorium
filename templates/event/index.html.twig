@@ -12,22 +12,22 @@
   <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 g-3">
     {% for event in events %}
     <div>
-      <div class="card" style="min-height: 30rem">
+      <div class="card" style="min-height: 33rem">
         <img src="{{ event.image }}" class="card-img-top" alt="{{ event.name }}">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{ names[loop.index0] }}</h5>
           <h6 class="card-subtitle mb-1 text-body-secondary">{{ event.address.locationName }}</h6>
-          {% if (event.startTime|date('d.m.Y')) != (event.endTime|date('d.m.Y')) %}
-          <p class="card-text mb-2 text-body-tertiary">{{ event.startTime ? event.startTime|date('d.m.Y') : '' }}
+          {% if (event.startTime|date('d M Y')) != (event.endTime|date('d M Y')) %}
+          <p class="card-text mb-2 text-body-tertiary">{{ event.startTime ? event.startTime|date('d M Y') : '' }}
             &ndash; {{
             event.endTime ?
-            event.endTime|date('d.m.Y') : '' }}</p>
+            event.endTime|date('d M Y') : '' }}</p>
           {% else %}
-          <p class="card-text mb-2 text-body-tertiary">{{ event.startTime ? event.startTime|date('d.m.Y H:i') : '' }}
+          <p class="card-text mb-2 text-body-tertiary">{{ event.startTime ? event.startTime|date('d M Y H:i') : '' }}
           </p>
           {% endif %}
 
-          <p class="card-text">{{ shortDescriptions[loop.index0] }}</p>
+          <p class="card-text">{{ (shortDescriptions[loop.index0])|nl2br }}</p>
           <div style="flex-grow: 1;"></div>
           <div class="d-flex flex-row gap-2">
             <a href="{{ path('app_event_show', {'id': event.id}) }}" class="btn btn-primary">Details</a>
@@ -66,8 +66,8 @@
       <td>{{ event.name }}</td>
       <td>{{ event.address.locationName }}</td>
       <td>{{ shortDescriptions[loop.index0] }}</td>
-      <td>{{ event.startTime ? event.startTime|date('Y-m-d H:i:s') : '' }}</td>
-      <td>{{ event.endTime ? event.endTime|date('Y-m-d H:i:s') : '' }}</td>
+      <td>{{ event.startTime ? event.startTime|date('d M Y H:i:s') : '' }}</td>
+      <td>{{ event.endTime ? event.endTime|date('d M Y H:i:s') : '' }}</td>
       <td><img src="{{ event.image }}" alt="" width="150"></td>
       <td>{{ event.capacity }}</td>
       <td>{{ event.contactEmail }}</td>

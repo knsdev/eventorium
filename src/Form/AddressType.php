@@ -14,7 +14,7 @@ class AddressType extends AbstractType
   public function buildForm(FormBuilderInterface $builder, array $options): void
   {
     $fieldOptionsDefault = [
-      'attr' => ['class' => 'form-control'],
+      'attr' => ['class' => 'form-control mb-3'],
       'label_attr' => ['class' => 'form-label'],
     ];
 
