@@ -20,16 +20,19 @@
   {% endblock %}
 </head>
 
-<body class="bg-body-tertiary">
-  <nav class="navbar navbar-expand-lg bg-body-secondary">
+<body>
+  <nav class="navbar navbar-expand-lg">
     <div class="container px-sm-0">
-      <a class="navbar-brand" href="{{ path('app_event_index') }}">{{ websiteTitle }}</a>
+      <a class="navbar-brand" style="position: relative; width:14rem;" href="{{ path('app_event_index') }}">
+        <div class="h1 font-family-sriracha" style="position: absolute; top: -1.384rem; left: 0">{{ websiteTitle }}
+        </div>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" style="font-size: 1.25rem">
           <li class="nav-item">
             {% if currentRoute=='app_event_index' %}
             <a class="nav-link active" aria-current="page" href="{{ path('app_event_index') }}">Home</a>
@@ -48,6 +51,17 @@
       </div>
     </div>
   </nav>
+  <section id="hero">
+    <div style="position: relative; z-index: -10">
+      <img src="{{ asset('images/concert-3084876_1920.jpg') }}" alt="hero image"
+        style="width: 100%; height: 18rem; object-fit:cover">
+      <div class="img-text-overlay comic-relief">
+        <div>Where Moments</div>
+        <div style="margin-left: 3rem;">Become Memories</div>
+      </div>
+    </div>
+    </div>
+  </section>
   {% block body %}{% endblock %}
   <div class="container-fluid">
     <footer class="mt-5">
