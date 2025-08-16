@@ -6,6 +6,7 @@ use App\Entity\Event;
 use App\Form\EventFormType;
 use App\Repository\AddressRepository;
 use App\Repository\EventRepository;
+use App\Repository\EventTypeRepository;
 use App\Service\StringUtilService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,11 +17,21 @@ use Symfony\Component\Routing\Attribute\Route;
 final class EventController extends AbstractController
 {
   #[Route('/', name: 'app_event_index', methods: ['GET'])]
-  public function index(EventRepository $eventRepository, StringUtilService $strUtil): Response
+  public function index(Request $request, EventRepository $eventRepository, EventTypeRepository $eventTypeRepository, StringUtilService $strUtil): Response
   {
-    $events = $eventRepository->findAll();
-    $shortDescriptions = [];
+    $selectedEventTypeId = $request->query->get('eventTypeId');
+    $selectedEventType = $eventTypeRepository->findOneBy(['id' => $selectedEventTypeId]);
+
+    if (empty($selectedEventType)) {
+      $events = $eventRepository->findAll();
+    } else {
+      $events = $eventRepository->findBy(['type' => $selectedEventType]);
+    }
+
+    $eventTypes = $eventTypeRepository->findAll();
+
     $names = [];
+    $shortDescriptions = [];
 
     foreach ($events as $event) {
       $name = $strUtil->limitStringLength($event->getName(), 35);
@@ -32,8 +43,10 @@ final class EventController extends AbstractController
 
     return $this->render('event/index.html.twig', [
       'events' => $events,
+      'names' => $names,
       'shortDescriptions' => $shortDescriptions,
-      'names' => $names
+      'eventTypes' => $eventTypes,
+      'selectedEventTypeId' => $selectedEventTypeId
     ]);
   }
 
