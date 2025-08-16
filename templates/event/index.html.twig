@@ -26,7 +26,12 @@
         <img src="{{ event.image }}" class="card-img-top" alt="{{ event.name }}">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{ names[loop.index0] }}</h5>
-          <h6 class="card-subtitle mb-1 text-body-secondary">{{ event.address.locationName }}</h6>
+
+          <h6 class="card-subtitle mb-1 text-body-secondary">
+            {% if event.address %}{{ event.address.locationName }}
+            {% else %}Unknown location
+            {% endif %}
+          </h6>
           {% if (event.startTime|date('d M Y')) != (event.endTime|date('d M Y')) %}
           <p class="card-text mb-2 text-body-tertiary">{{ event.startTime ? event.startTime|date('d M Y') : '' }}
             &ndash; {{

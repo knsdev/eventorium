@@ -29,7 +29,8 @@
         <hr>
         <div class="d-flex flex-row gap-3 mb-2">
           <h5 class="text-secondary-emphasis mb-0" style="flex-basis: 8rem">Type:</h5>
-          <h5 class="text-secondary-emphasis mb-0">{{ event.type.name }}</h5>
+          <h5 class="text-secondary-emphasis mb-0">{% if event.type %}{{ event.type.name }}</h5>{% else %}
+          Not specified{% endif %}
         </div>
         <div class="d-flex flex-row gap-3">
           <h5 class="text-secondary-emphasis mb-0" style="flex-basis: 8rem">Capacity:</h5>
@@ -37,13 +38,18 @@
         </div>
         <hr>
         <h2 class="mb-3">Event Location</h2>
+        {% if event.address %}
         <h4 class="mb-3 text-secondary-emphasis">{{ event.address.locationName }}</h4>
-        <p class="mb-1 ms-2"><i class="bi bi-geo-alt"></i>
+        <p class="mb-1 ms-2">
+          <i class="bi bi-geo-alt"></i>
           <span class="ms-2">
             {{ event.address.streetName }}{% if event.address.streetNumber != 0 %} {{ event.address.streetNumber }}{%
             endif %}, {{ event.address.zipCode }} {{ event.address.cityName }}, {{ event.address.countryName }}
           </span>
         </p>
+        {% else %}
+        <p>Unknown location</p>
+        {% endif %}
         {% if event.contactPhoneNumber %}
         <p class="mb-1 ms-2"><i class="bi bi-telephone"></i> <a class="ms-2"
             href="tel:{{ event.contactPhoneNumber }}">{{
