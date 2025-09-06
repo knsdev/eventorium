@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2025 at 03:33 PM
+-- Generation Time: Sep 06, 2025 at 07:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,10 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `be25_exam6_bigeventskimschlueter`
+-- Database: `eventorium`
 --
-CREATE DATABASE IF NOT EXISTS `be25_exam6_bigeventskimschlueter` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `be25_exam6_bigeventskimschlueter`;
 
 -- --------------------------------------------------------
 
